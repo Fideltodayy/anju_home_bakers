@@ -15,16 +15,25 @@ const DeliveryForm = ({handleFormSubmit}) => {
         setInputs((values) => ({...values,[name]: value}))
     }
     return(
-        <form className="" onSubmit={handleSubmit}>
-            <h3>Delivery Note</h3>
+        <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+        <h2 className="text-xl font-semibold mb-4">Create Delivery Note</h2>
             {/* Capture the customer name, product name, and quantity in their respective input fields */}
-            <label>Customer Name</label>
-            <input className=" block" placeholder="Customer Name" type="text"  onChange={setOnChange} name="customerName"></input>
-            <label>Product Name</label>
-            <input className=" block" placeholder="Enter Product Name" type="text"  onChange={setOnChange} name="productName"></input>
-            <label>Quantity</label>
-            <input className=" block" placeholder="Enter an integer" type="text"  onChange={setOnChange} name="quantity"></input>
+            <div>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="customerName">
+            Customer Name
+            </label>            
+            <input className="w-full p-2 border rounded" required placeholder="Customer Name" type="text"  onChange={setOnChange} name="customerName"></input>
+
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="customerName">
+            Product Name
+            </label>
+            <input className="w-full p-2 border rounded" required placeholder="Enter Product Name" type="text"  onChange={setOnChange} name="productName"></input>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="customerName">
+            Quantity</label>
+            <input className="w-full p-2 border rounded" required placeholder="Enter an integer" type="text"  onChange={setOnChange} name="quantity"></input>
             <button className=" border-2" type="submit">Submit</button>
+
+            </div>
         </form>
 
     )

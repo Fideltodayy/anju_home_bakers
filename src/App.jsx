@@ -25,7 +25,8 @@ function App() {
 
   return (
     <>
-      <div className=" bg-black text-white text-3xl font-bold h-screen w-screen">
+      <div className=" bg-black text-white min-h-screen w-screen p-4">
+      <h1 className="text-3xl font-bold mb-8 text-center">Delivery Note System</h1>
         <DeliveryForm handleFormSubmit={handleFormSubmit} />
         <DeliveryList deliverynotes={deliveryList}/>
       </div>
