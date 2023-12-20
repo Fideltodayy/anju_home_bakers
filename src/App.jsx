@@ -1,23 +1,35 @@
-// src/App.js
-import React, { useState } from 'react';
-import DeliveryForm from './components/DeliveryForm';
-import DeliveryList from './components/DeliveryList';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-  const [deliveryNotes, setDeliveryNotes] = useState([]);
-
-  const handleFormSubmit = (deliveryNote) => {
-    console.log('Delivery Note:', deliveryNote);
-    setDeliveryNotes([...deliveryNotes, deliveryNote]);
-  };
+  const [count, setCount] = useState(0)
 
   return (
-    <div className="bg-gray-100 min-h-screen p-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">Delivery Note System</h1>
-      <DeliveryForm onFormSubmit={handleFormSubmit} />
-      <DeliveryList deliveryNotes={deliveryNotes} />
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
