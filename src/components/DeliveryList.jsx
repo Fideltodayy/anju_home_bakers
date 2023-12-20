@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+// Import pdfMake fonts directly
+import 'pdfmake/build/vfs_fonts';
 
 // Register the fonts with pdfmake
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+pdfMake.vfs = pdfMake.createVfs();
 
 const DeliveryList = ({ deliveryNotes }) => {
   const [selectedNote, setSelectedNote] = useState(null);
