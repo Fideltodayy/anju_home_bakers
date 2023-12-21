@@ -17,7 +17,7 @@ const DeliveryForm = ({onFormSubmit}) => {
         setInputs((values) => ({...values,[name]: value}))
     }
     return(
-        <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+        <form className=" bg-gray-100 max-w-md mx-auto" onSubmit={handleSubmit}>
         <h2 className="text-xl font-semibold mb-4">Create Delivery Note</h2>
             {/* Capture the customer name, product name, and quantity in their respective input fields */}
             <div className="">
@@ -57,7 +57,7 @@ const DeliveryForm = ({onFormSubmit}) => {
             <input className="w-full p-2 border rounded" required placeholder="Enter an integer" type="text"  onChange={setOnChange} name="quantity"></input>
             <button
                 type="submit"
-                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-300 mt-4"
+                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-800 transition duration-300 mt-4"
             >
                 Create Delivery Note
             </button>

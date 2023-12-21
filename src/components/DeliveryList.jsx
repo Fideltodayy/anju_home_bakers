@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import pdfMake from 'pdfmake/build/pdfmake';
-
-// Import pdfMake fonts directly
-import 'pdfmake/build/vfs_fonts';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 // Register the fonts with pdfmake
-pdfMake.vfs = pdfMake.createVfs();
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const DeliveryList = ({ deliveryNotes }) => {
-  const [selectedNote, setSelectedNote] = useState(null);
+ const [selectedNote, setSelectedNote] = useState(null);
 
-  const columns = [
+ const columns = [
     {
       name: 'Customer Name',
       selector: 'customerName',
@@ -32,14 +30,14 @@ const DeliveryList = ({ deliveryNotes }) => {
       selector: 'unitPrice',
       sortable: true,
     },
-  ];
+ ];
 
-  const handleRowClick = (row) => {
+ const handleRowClick = (row) => {
     setSelectedNote(row);
     generatePdf(row);
-  };
+ };
 
-  const generatePdf = (note) => {
+ const generatePdf = (note) => {
     const content = {
       content: [
         { text: 'Delivery Note', style: 'header' },
@@ -63,6 +61,32 @@ const DeliveryList = ({ deliveryNotes }) => {
             ],
           },
         },
+        { text: '\n' },
+        {
+          table: {
+            widths: ['*', '*', '*', '*'], // Adjust the widths as needed
+            body: [
+              [
+                { text: 'Vat 373.79', colSpan: 4 },
+                '',
+                '',
+                '',
+              ],
+              [
+                { text: 'Total Price', bold: true },
+                { text: '220.00', bold: true },
+                { text: 'Vat', bold: true },
+                { text: '220.00', bold: true },
+              ],
+              [
+                { text: 'Total Payable', bold: true },
+                { text: '440.00', bold: true },
+                '',
+                '',
+              ],
+            ],
+          },
+        },
       ],
       styles: {
         header: {
@@ -76,14 +100,14 @@ const DeliveryList = ({ deliveryNotes }) => {
 
     const pdfDoc = pdfMake.createPdf(content);
     pdfDoc.open();
-  };
+ };
 
-  return (
-    <div className="max-w-4xl mx-auto mt-8">
+ return (
+    <div className="max-w-4xl mx-auto mt-8 p-4 ">
       <h2 className="text-xl font-semibold mb-4">Delivery Notes</h2>
       <DataTable columns={columns} data={deliveryNotes} pagination onRowClicked={handleRowClick} />
     </div>
-  );
+ );
 };
 
 export default DeliveryList;
